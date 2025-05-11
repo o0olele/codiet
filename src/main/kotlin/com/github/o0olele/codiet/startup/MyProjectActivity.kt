@@ -1,4 +1,4 @@
-package org.jetbrains.plugins.template.startup
+package com.github.o0olele.codiet.startup
 
 import com.intellij.openapi.diagnostic.thisLogger
 import com.intellij.openapi.project.Project
