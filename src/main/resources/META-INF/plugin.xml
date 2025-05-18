@@ -9,7 +9,23 @@
     <resource-bundle>messages.MyBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="com.github.o0olele.codiet.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
+        <inline.completion.provider implementation="com.github.o0olele.codiet.CodietInlineCompletionProvider"/>
+        <toolWindow factoryClass="com.github.o0olele.codiet.toolWindow.MyToolWindowFactory" id="MyToolWindow" anchor="right"/>
         <postStartupActivity implementation="com.github.o0olele.codiet.startup.MyProjectActivity" />
+        <statusBarWidgetFactory implementation="com.github.o0olele.codiet.CodietStatusBarWidgetFactory" id="CodietStatusBarWidgetFactory"/>
+        <applicationConfigurable
+                parentId="tools"
+                instance="com.github.o0olele.codiet.config.CodietConfig"
+                id="com.github.o0olele.codiet.config.CodietConfig"
+                displayName="AI code completion idea"/>
+        <applicationService serviceImplementation="com.github.o0olele.codiet.config.CodietState"/>
     </extensions>
+
+    <actions>
+        <action id="com.github.o0olele.codiet.CodietStatsPopupDialogAction"
+                class="com.github.o0olele.codiet.CodietStatsPopupDialogAction" text="AI Code Completion Stats"
+                description="AI code completion stats">
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+        </action>
+    </actions>
 </idea-plugin>
